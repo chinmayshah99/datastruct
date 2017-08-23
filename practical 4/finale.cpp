@@ -12,7 +12,7 @@ bool swap(int pos1,int pos2)
 {
     pos1--;
     pos2--;
-    node *pos_1, *pos_2, *traverse;
+    node *pos_1 = NULL, *pos_2 = NULL, *traverse = NULL;
     int flag =0;
     traverse = start;
     while(traverse->link != NULL)
@@ -29,6 +29,8 @@ bool swap(int pos1,int pos2)
         traverse = traverse->link;
 
     }
+    if( pos_1 == NULL || pos_2 == NULL )
+        return false;
 
     // just swapping the int values
     // actual swapping is done here

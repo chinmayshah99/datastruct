@@ -189,7 +189,7 @@ int main()
         cin>>z;
         create_node(z);
     }
-    /*
+
     cout<<"enter pos you want to change"<<endl;
     cin>>z;
     cin>>change;
@@ -200,8 +200,9 @@ int main()
     cin>>z;
     bool _delete_ = _delete(z);
     greet(_delete_);
-    */
-    //display_forward();
+
+    display_forward();
+    cout<<endl;
     display_reverse();
 
 }
