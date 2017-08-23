@@ -89,6 +89,13 @@ void display()
         std::cout<<s->value;
     }
 }
+void greet(bool what)
+{
+    if ( what == true)
+        std::cout<<"yeah"<<std::endl;
+    else
+        std::cout<<"boo"<<std::endl;
+}
 
 int main()
 {
@@ -100,6 +107,7 @@ int main()
     }
     int pos1,pos2;
     std::cin>>pos1>>pos2;
-    swap(pos1,pos2);
+    bool swap_ = swap(pos1, pos2);
+    greet(swap_);
     display();
 }
