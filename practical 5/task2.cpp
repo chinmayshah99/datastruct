@@ -9,6 +9,7 @@ typedef struct node{
 
     node()
     {
+        
         left = nullptr;
         right = nullptr;
     }
