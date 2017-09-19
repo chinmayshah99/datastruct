@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <string.h>
+#include <sstream>
 using namespace std;
 
 int total_freq = 0;
@@ -154,7 +156,7 @@ void display(node *temp)
         		for(int i = 1; i < sum; i++)
         			cout<<"1";
         	}
-        cout<<"0 "<<temp2->s<<temp2->probablity<<" "<<endl ;
+        cout<<"0 "<<temp2->s<<" "<<temp2->probablity<<" "<<endl ;
         temp= temp->right;
     }
 
@@ -171,7 +173,7 @@ int main()
             break;
         insert(input1);
     }*/
-	    insert("LOVE");
+	   /* insert("LOVE");
 		insert("PEOPLE");
 		insert("USE");
 		insert("THINGS");
@@ -180,6 +182,30 @@ int main()
 		insert("PEOPLE"); 
 		insert("LOVE");
 		insert("THINGS");
+	getline(cin,input1);*
+
+	char *pch;
+	pch = strtok (input1," ");
+	  while (pch != NULL)
+	  {
+	    insert(pch);
+	    pch = strtok (NULL, " ");
+	  }*/
+	//istringstream f("love ass me sdfsd love kko kko love");
+	
+
+	string st;
+	getline(cin,st);
+
+	stringstream f(st);
+	
+	while(getline(f,st,' '))
+	{
+		f >> st;
+		insert(st);
+	}
+
+
     sort();
     probablity();
     tree();
