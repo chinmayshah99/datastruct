@@ -1,3 +1,5 @@
+// THERE ARE SOME KNOWN BUGS
+
 #include <iostream>
 #include <vector>
 
@@ -18,6 +20,9 @@ typedef struct sum{
 
 #define max_size 5
 
+// hardcodes in this  case
+// can be:
+// int matrix[max_size][max_size] = {0};
 int matrix[5][5] = {
     {0,2,0,2,0},
     {2,0,3,1,0},
@@ -30,19 +35,23 @@ int matrix[5][5] = {
 void insert(char ch)
 {
     //cout<<"insert for"<<ch<<endl;
-    int index = ch-65;
+
+    // converting the character to integer number; helps in easy accessing of matrix
+    int index = toupper(ch)-65;
     int no_of_nodes;
     cin>>no_of_nodes;
     for(int i = 0 ; i < no_of_nodes; i++)
     {
         //cout<<"enter for"<<i+1<<endl;
+        // just a fancy way to do take input
         node *temp = new(node);
         cin>>temp->name;
         cin>>temp->weigh;
         int current = toupper(temp->name);
         current-=65;
+
         matrix[index][current] = temp->weigh;
-        delete(temp);
+        delete(temp); // making sure memory is cleared
     }
 }
 
@@ -61,6 +70,8 @@ void shortest_path()
 
 
     /*
+		rough flow of steps:
+
         check if current element = destination
 
         if not then go to the element in row
@@ -69,8 +80,13 @@ void shortest_path()
         else
             increase sum for this occurance and move on.
     */
+
     //cout<<endl<<current<<destination_1<<endl;
-    int start_len = 0, k =0;
+
+    // for ensuring that path are not repeated during computation.
+    // it makes sure that that path selection in matrix is started from the ones not taken till now
+    int start_len = 0; 
+    int k =0; // track of no_of_path
 
     for(int n = 0; n <3; n++){
         if(current == destination_1)
@@ -94,8 +110,11 @@ void shortest_path()
             {
                 //cout<<"line94"<<endl;
                 //cout<<matrix[current][i]<<endl;
-                // to check if al
+                // to check if the path is already taken
+                // basically cyclic loop formation check
                 //cout<<"\n\t"<<s1[k].path.size()<<endl;
+                // if the path is already taken, i.e., the node is already visited
+                // it moves on to check for new node
                 for(int j = 0; j < s1[k].path.size(); j++)
                 {
                     //cout<<"line100"<<endl;
@@ -108,9 +127,9 @@ void shortest_path()
                         }
                 }
                 //cout<<"line 106  "<<i<<endl;
-                s1[k].value+=matrix[current][i];
+                s1[k].value+=matrix[current][i]; // adding to the current path length
                 //cout<<"distance as of now: "<<s1[k].value<<endl;
-                s1[k].path.push_back(current);
+                s1[k].path.push_back(current); // pushing the current node to path
                 current = i;
                 //cout<<current;
                 goto def;
@@ -120,8 +139,8 @@ void shortest_path()
     }while(current == destination_1);
     //cout<<endl<<s1[k].value<<endl;
     //cout<<k<<"done"<<endl;
-
-    start_len = s1[k].path[k++] + 1;
+    s1[k].path.push_back(destination_1);
+    start_len = s1[k].path[k++] + 1; // making sure that nodes path are not repeated
     current = toupper(source) - 65;
     }
 }
@@ -148,7 +167,11 @@ int main()
     }
     shortest_path();
 
-    cout<<s1[0].value<<endl;
-    cout<<s1[1].value<<endl;
-    cout<<s1[2].value<<endl;
+    for(int i =0; i < 3; i++)
+    {
+    	cout<<s1[i].value<<endl;
+    	for(int j = 0; j <s1[i].path.size();j++)
+    		cout<<char((s1[i].path[j]) + 65)<<" ";
+    	cout<<endl;
+    }
 }
