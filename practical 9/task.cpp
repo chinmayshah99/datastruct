@@ -1,3 +1,9 @@
+/*
+    In the school council election election there are 20 candidates contesting for the post of general secretary. 
+    Write a program to declare the winner having his/her name on the top of the list.
+*/
+// Chinmay Shah
+
 #include <iostream>
 #include <ctime>
 #include <iomanip>

@@ -12,8 +12,6 @@
     There may be a better solution 
 */
 
-
-
 #include <iostream>
 
 typedef struct node
@@ -22,12 +20,11 @@ typedef struct node
     node *back;
     node *front[2]; // front[0] for  left and front[1] right
     // you can't make it two seprate pointers because it becomes binary tree
-}node;
+} node;
 
-node *start = NULL; //the start pointer
+node *start = NULL;   //the start pointer
 node *current = NULL; // pointer to keep track during game development
-node *game = NULL; // pointer to keep track of player position
-
+node *game = NULL;    // pointer to keep track of player position
 
 /*
     adds node to start if start is null
@@ -38,7 +35,7 @@ node *game = NULL; // pointer to keep track of player position
 void create_node(int data, int pos)
 {
     node *temp;
-    temp = new(node);
+    temp = new (node);
     temp->data = data;
     //making all pointer references to null
     temp->front[0] = NULL;
@@ -58,7 +55,7 @@ void create_node(int data, int pos)
     // because it's doubly linked list, the back pointer of this new node points to previous node
     else if (pos == 0)
     {
-        current ->front[0] = temp;
+        current->front[0] = temp;
         temp->back = current;
         current = temp;
     }
@@ -66,7 +63,7 @@ void create_node(int data, int pos)
     // just change the left to right in the above function
     else
     {
-        current ->front[1] = temp;
+        current->front[1] = temp;
         temp->back = current;
         current = temp;
     }
@@ -81,15 +78,15 @@ void create_node(int data, int pos)
     if player wins, the program is exited
 */
 
-void  play(int pos)
+void play(int pos)
 {
     // left move
-    if(pos == 0)
+    if (pos == 0)
     {
         //if the left division doesn;t exist then stay at the same position
-        if(game->front[0] == NULL)
+        if (game->front[0] == NULL)
         {
-            std::cout<<"invalid move"<<std::endl;
+            std::cout << "invalid move" << std::endl;
             return;
         }
         else
@@ -97,11 +94,11 @@ void  play(int pos)
     }
 
     // right move
-    else if(pos == 1)
+    else if (pos == 1)
     {
-        if(game->front[1] == NULL)
+        if (game->front[1] == NULL)
         {
-            std::cout<<"invalid move"<<std::endl;
+            std::cout << "invalid move" << std::endl;
             return;
         }
         else
@@ -109,13 +106,13 @@ void  play(int pos)
     }
 
     // for the backtrack
-    // if user is at start then's its dispalyed 
+    // if user is at start then's its dispalyed
     // else user is allowed to back to the previous position at all time
-    else if(pos == -1)
+    else if (pos == -1)
     {
-        if(game->back == NULL)
+        if (game->back == NULL)
         {
-            std::cout<<"you're already at start"<<std::endl;
+            std::cout << "you're already at start" << std::endl;
             return;
         }
         else
@@ -123,9 +120,9 @@ void  play(int pos)
     }
 
     //checks if winning condition is met
-    if(game->data == 77)
+    if (game->data == 77)
     {
-        std::cout<<"you win"<<std::endl;
+        std::cout << "you win" << std::endl;
         exit(0);
     }
 }
@@ -133,26 +130,27 @@ void  play(int pos)
 int main()
 {
     using namespace std;
-    int z,mpos;
-    
-    create_node(0,99); // random 99 argument
-    cout<<"make maze"<<endl;
-    cout<<"77 for victory, 0 in other case"<<endl;
-    cout<<"enter 0 for  left, 1 for right"<<endl;
-    do{
-        cout<<"enter no ";
-        cin>>z;
-        cout<<"enter pos ";
-        cin>>mpos;
-        create_node(z,mpos);
-    }while(z!=77);
+    int z, mpos;
+
+    create_node(0, 99); // random 99 argument
+    cout << "make maze" << endl;
+    cout << "77 for victory, 0 in other case" << endl;
+    cout << "enter 0 for  left, 1 for right" << endl;
+    do
+    {
+        cout << "enter no ";
+        cin >> z;
+        cout << "enter pos ";
+        cin >> mpos;
+        create_node(z, mpos);
+    } while (z != 77);
 
     game = start;
-    cout<<"let's  start"<<endl;
-    cout<<"enter 0 for  left, 1 for right and -1 for backtrack"<<endl;
-    while(true)
+    cout << "let's  start" << endl;
+    cout << "enter 0 for  left, 1 for right and -1 for backtrack" << endl;
+    while (true)
     {
-        cin>>mpos;
+        cin >> mpos;
         play(mpos);
     }
 

@@ -1,3 +1,14 @@
+/*
+    Rank the students as per their percentage of the scores provided in 6 courses (subjects). 
+    Find the top three course (subject) wise performers of the class and print. 
+    
+    Constraints: User friendly Program with all possible input validations. It should run for any number of students in the college. 
+    
+    Apply both linear and Binary search techniques and compare the time taken to search the required elements in both search approaches.
+
+*/
+// Chinmay Shah
+
 #include <iostream>
 #include <vector>
 #include <ctime>

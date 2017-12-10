@@ -15,46 +15,44 @@
 using namespace std;
 int arr_top = -1, temp_top = -1;
 
-int arr[size] ;
+int arr[size];
 int temp[size];
 void push(int arr[], int ch, int &top);
 int pop(int arr[], int &top);
 void sort1();
 
-
-
-void disp(int arr[])
+void disp(int arr[], int &top)
 {
-    for (int i = 0 ; i <= size; i++)
+    for (int i = top; i  >= 0; i--)
     {
-        cout<<arr[i]<<" ";
+        cout << arr[i] << " ";
     }
-    cout<<endl;
+    cout << endl;
 }
 
 int main()
 {
 
-    int tem []={34,3,31,98,23};
-    for(int i = 0 ; i <size; i++ )
-        push(arr,tem[i], arr_top);
-
-    for(int i = 0 ; i <size; i++ )
-        cout<<arr[i]<<" ";
+    int tem[] = {34, 3, 31, 98, 23};
+    for (int i = 0; i < size; i++)
+    {
+        int temp = tem[i];
+        push(arr, temp, arr_top);
+    }
+    disp(arr,arr_top);
 
     sort1();
 
     return 0;
 }
 
-
 void push(int arr[], int ch, int &top)
 {
-    cout<<"\n\t"<<top<<endl;
+    cout << "\n\t" << top << endl;
     top++;
     if (top == size)
     {
-        cout<<"over flowed"<<endl;
+        cout << "over flowed" << endl;
         //exit(-1);
     }
     else
@@ -63,48 +61,50 @@ void push(int arr[], int ch, int &top)
 
 int pop(int arr[], int &top)
 {
-    if(top == -1)
+    if (top == -1)
     {
-        cout<<"stack already empty"<<endl;
-//        exit(-1);
+        cout << "stack already empty" << endl;
+        //        exit(-1);
     }
     else
     {
         top--;
-        return arr[top+1];
+        return arr[top + 1];
     }
 }
-
 
 void sort1()
 {
     int r1;
-    push(temp,pop(arr,arr_top),temp_top);
+    push(temp, pop(arr, arr_top), temp_top);
 
-    for( int i = 1; i < size; i++)
+    for (int i = 1; i < size; i++)
     {
-        int temp1 = pop(arr,arr_top);
+        int temp1 = pop(arr, arr_top);
         //cout<<temp1<<endl;
         //temp[r1] = temp1;
-        cout<<"\n\n\n"<<temp1;
-        do{
-//            int r1 =i;
-            cout<<" temp::  ";
-            disp(temp);
-            cout<<" arr::  ";
-            disp(arr);
+        cout << "\n\n\n"
+             << temp1;
+        do
+        {
+            //            int r1 =i;
+            cout << " temp::  ";
+            disp(temp,temp_top);
+            cout << " arr::  ";
+            disp(arr,arr_top);
+            // if temp stack is empty then push to this stack
             if (temp_top == -1)
-                push(temp,temp1,temp_top);
+                push(temp, temp1, temp_top);
             //cout<<temp1<<" "<<temp[i]<<endl;
+            
+
             else if (temp1 < temp[temp_top])
             {
-                push(arr, pop(temp,temp_top), arr_top);
+                push(arr, pop(temp, temp_top), arr_top);
             }
             else
-                push(temp,temp1, temp_top);
+                push(temp, temp1, temp_top);
 
-        }while(temp1 > temp[i]);
+        } while (temp1 > temp[i]);
     }
 }
-
-

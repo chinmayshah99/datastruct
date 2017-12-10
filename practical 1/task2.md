@@ -21,16 +21,16 @@ The landlines connected at home are connected to telephone exchange like a Tree.
 •	Queue – This is because you start reading the file from left to right top to bottom. Which is basically a first in first out. 
 Array could have been a solution, but when you change the code(in the middle) , it would have been in-efficient both memory and time consuming. 
 7.	To implement back functionality in web browser.
-•	Double- connected linked list – This is because when you click the back button, you can visit any page that you have visited in the random order and also can also be back to the current tab with forward button. 
+•	Double- connected linked list – This is because when you click the back button, you can visit any page that you have visited in the                  random order and also can also be back to the current tab with forward button. 
 8.	To record sequence of all the pages browsed in one session.
-•	Stack- This is because all of them will be with time-stamp which will be in particular order. Also as you browse, you keep adding them on top of the existing history. 
+•	Stack- This is because all of them will be with time-stamp which will be in particular order. Also as you browse, you keep adding them              on top of the existing history. 
 9.	To process network packets coming to the router.
 •	Queue – This will keep transmitting packets as soon as they arrive -first in first out
-•	Directed Graph- This will be used for finding the destination, like packets from one router will be sent to another on basis of destination location on packet by finding the appropriate router using the directed graph. 
+•	Directed Graph- This will be used for finding the destination, like packets from one router will be sent to another on basis of                              destination location on packet by finding the appropriate router using the directed graph. 
 •	Linked List – This is because as packets keep on arriving, the destination will combine the packets. 
 10.	To represent machines on internet and to find optimal path between source machine and destination machine to send data.
 •	Undirected graph- This will be used to find the shortest distance on basis of minimum nodes to the destination. 
-•	Tree- Once it reaches a node on LAN, let’s say main SVKM router, it’s tree as router acts as root and all devices connected to it are it’s leaves. 
+•	Tree- Once it reaches a node on LAN, let’s say main SVKM router, it’s tree as router acts as root and all devices connected to it are              it’s leaves. 
 11.	To represent connections\relations in social networking sites.
 •	Undirected graph- Because each user is connected to other user somehow. Friends connected are mutual. 
 •	But if user follows someone, and they aren’t mutually following back, it’s a directed graph. Ex fan following of celebrity on twitter. 
